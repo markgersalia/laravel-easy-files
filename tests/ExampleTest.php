@@ -26,7 +26,6 @@ it('can generate a PDF file and save record', function () {
     expect(Storage::disk('public')->exists('contracts/'.auth()->id().'/test.pdf'))->toBeTrue();
 });
 
-
 it('can upload a file and save record', function () {
     Storage::fake('public');
 
