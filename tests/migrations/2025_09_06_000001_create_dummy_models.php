@@ -3,7 +3,8 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class {
+return new class
+{
     public function up()
     {
         Schema::create('dummy_models', function (Blueprint $table) {

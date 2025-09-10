@@ -1,4 +1,5 @@
 <?php
+
 namespace Markgersalia\LaravelEasyFiles\Traits;
 
 use Illuminate\Support\Facades\DB;
@@ -7,7 +8,6 @@ use Markgersalia\LaravelEasyFiles\Models\File;
 
 trait InteractsWithFiles
 {
-
     protected function getTemplate(): string
     {
         return $this->template ?? '';
@@ -21,24 +21,25 @@ trait InteractsWithFiles
     protected function getFilename(): string
     {
         return $this->file_name ?? '';
-    } 
+    }
 
     private function generateFilePath($resource): string
     {
-        if($this->getDocumentType()){
+        if ($this->getDocumentType()) {
             return "{$resource->id}/{$this->getDocumentType()}/";
         }
-            return "{$resource->id}";
+
+        return "{$resource->id}";
 
     }
 
     private function generateFilename($resource): string
     {
         if ($this->getFilename()) {
-            return sprintf("%s.pdf", $this->getFilename());
+            return sprintf('%s.pdf', $this->getFilename());
         }
 
-        return sprintf("%s_%d.pdf", now()->format("Ymd"), $resource->id);
+        return sprintf('%s_%d.pdf', now()->format('Ymd'), $resource->id);
     }
 
     public function download($resource, $fileId): void
@@ -62,9 +63,9 @@ trait InteractsWithFiles
         });
     }
 
-    public function processUpload($resource,$requestFile)
+    public function processUpload($resource, $requestFile)
     {
-        return DB::transaction(function () use ($resource,$requestFile) {
+        return DB::transaction(function () use ($resource, $requestFile) {
             $file = $requestFile;
             $fileName = $file->getClientOriginalName();
 
@@ -75,7 +76,6 @@ trait InteractsWithFiles
                 $this->getDocumentType(),
                 $resource
             );
-
 
             return $uploaded;
         });

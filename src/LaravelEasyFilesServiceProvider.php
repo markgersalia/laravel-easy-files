@@ -2,9 +2,9 @@
 
 namespace Markgersalia\LaravelEasyFiles;
 
+use Markgersalia\LaravelEasyFiles\Commands\LaravelEasyFilesCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Markgersalia\LaravelEasyFiles\Commands\LaravelEasyFilesCommand;
 
 class LaravelEasyFilesServiceProvider extends PackageServiceProvider
 {
@@ -23,8 +23,9 @@ class LaravelEasyFilesServiceProvider extends PackageServiceProvider
             ->hasCommand(LaravelEasyFilesCommand::class);
     }
 
-    public function boot(){
-            // Publish migrations
+    public function boot()
+    {
+        // Publish migrations
         $this->publishes([
             __DIR__.'/../database/migrations/' => database_path('migrations'),
         ], 'migrations');
@@ -35,5 +36,4 @@ class LaravelEasyFilesServiceProvider extends PackageServiceProvider
         ], 'config');
 
     }
-    
 }

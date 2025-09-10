@@ -14,7 +14,7 @@ return new class extends Migration
             $table->string('file_name');        // unify filename
             $table->string('path');             // storage path
             $table->enum('origin', ['generated', 'uploaded'])->default('generated');
-            $table->string('document_type');    
+            $table->string('document_type');
             $table->string('preview_url')->nullable(); // link for preview/download
             $table->timestamps();
         });

@@ -3,8 +3,8 @@
 namespace Markgersalia\LaravelEasyFiles\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Orchestra\Testbench\TestCase as Orchestra;
 use Markgersalia\LaravelEasyFiles\LaravelEasyFilesServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
@@ -15,7 +15,7 @@ class TestCase extends Orchestra
         Factory::guessFactoryNamesUsing(
             fn (string $modelName) => 'Markgersalia\\LaravelEasyFiles\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
-        
+
     }
 
     protected function getPackageProviders($app)
@@ -35,5 +35,4 @@ class TestCase extends Orchestra
          }
          */
     }
-    
 }
