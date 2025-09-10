@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Markgersalia\LaravelEasyFiles\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class LaravelEasyFilesCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-easy-files';
 
     public $description = 'My command';
 

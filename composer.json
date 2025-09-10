@@ -1,24 +1,26 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "markgersalia/laravel-easy-files",
+    "description": "A lightweight Laravel package to easily upload, generate and manage files & documents with minimal setup.",
     "keywords": [
-        ":vendor_name",
+        "markgersalia",
         "laravel",
-        ":package_slug"
+        "laravel-easy-files"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/markgersalia/laravel-easy-files",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Mark Anthony Gersalia",
+            "email": "markgersalia.codev@gmail.com",
             "role": "Developer"
         }
     ],
     "require": {
         "php": "^8.4",
         "spatie/laravel-package-tools": "^1.16",
-        "illuminate/contracts": "^11.0||^12.0"
+        "illuminate/contracts": "^11.0||^12.0",
+        "barryvdh/laravel-dompdf": "*"
+
     },
     "require-dev": {
         "laravel/pint": "^1.14",
@@ -35,13 +37,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src/",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories/"
+            "Markgersalia\\LaravelEasyFiles\\": "src/",
+            "Markgersalia\\LaravelEasyFiles\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests/",
+            "Markgersalia\\LaravelEasyFiles\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
@@ -63,10 +65,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Markgersalia\\LaravelEasyFiles\\LaravelEasyFilesServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "LaravelEasyFiles": "Markgersalia\\LaravelEasyFiles\\Facades\\LaravelEasyFiles"
             }
         }
     },
