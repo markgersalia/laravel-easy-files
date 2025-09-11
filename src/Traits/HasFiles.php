@@ -113,4 +113,41 @@ trait HasFiles
     {
         return $this->files()->where('document_type', $type);
     }
+
+    public function attachTempFile(string $tempFilename, string $targetPath, string $type)
+    {
+        $auth_id = auth()->id();
+        // Where the temp file lives
+        $tempPath = "temp/laravel-easy-files/{$tempFilename}";
+
+        if (!Storage::disk('public')->exists($tempPath)) {
+            throw new \Exception("Temp file not found: {$tempFilename}");
+        }
+
+        // Final filename
+        $fileName = $tempFilename; // or generate new name if you like
+ 
+          // Ensure dir exists
+        if (! file_exists(dirname($targetPath))) {
+            mkdir(dirname($targetPath), 0777, true);
+        }
+        // Move the file using Laravel Storage
+        $storedPath = Storage::disk('public')->putFileAs(
+            "$targetPath/uploads/{$auth_id}",    // 👈 final folder
+            Storage::disk('public')->path($tempPath), // source
+            $fileName
+        );
+
+        // Delete temp file
+        Storage::disk('public')->delete($tempPath);
+
+        // Save file record in DB
+        return $this->files()->create([
+            'file_name'     => $fileName,
+            'document_type' => $type,
+            'path'          => storage_path($storedPath),              // relative path
+            'origin'        => self::IS_UPLOADED,
+            'preview_url'  => Storage::url($storedPath) // generates /storage/...
+        ]);
+    }
 }

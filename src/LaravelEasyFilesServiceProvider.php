@@ -34,6 +34,8 @@ class LaravelEasyFilesServiceProvider extends PackageServiceProvider
         $this->publishes([
             __DIR__.'/../config/easy-files.php' => config_path('easy-files.php'),
         ], 'config');
+ 
+        $this->loadRoutesFrom(__DIR__.'/routes/api.php'); 
 
     }
 }
