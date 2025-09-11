@@ -4,9 +4,8 @@ namespace Markgersalia\LaravelEasyFiles\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Markgersalia\LaravelEasyFiles\Traits\InteractsWithFiles;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
+use Markgersalia\LaravelEasyFiles\Traits\InteractsWithFiles;
 
 class TempUploadController extends Controller
 {
@@ -22,20 +21,19 @@ class TempUploadController extends Controller
             $file = $request->file('filepond');
             $uniqueId = Str::uuid()->toString();
 
-            $filename = $uniqueId . '_' . $file->getClientOriginalName();
+            $filename = $uniqueId.'_'.$file->getClientOriginalName();
             $path = $file->storeAs(
                 'temp/laravel-easy-files',
                 $filename,
                 'public'
             );
-  
 
             return response()->json([
-                'id'       => $uniqueId, // 👈 this is what you’ll use later
+                'id' => $uniqueId, // 👈 this is what you’ll use later
                 'filename' => $filename,
-                'path'     => $path,
-                'url'      => asset("storage/{$path}"),
+                'path' => $path,
+                'url' => asset("storage/{$path}"),
             ]);
-        } 
+        }
     }
 }

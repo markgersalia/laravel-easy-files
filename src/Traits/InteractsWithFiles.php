@@ -67,7 +67,7 @@ trait InteractsWithFiles
     {
         return DB::transaction(function () use ($resource, $requestFile) {
             $file = $requestFile;
-            $fileName = $file->getClientOriginalName(); 
+            $fileName = $file->getClientOriginalName();
             $uploaded = $resource->processUploading(
                 $fileName,
                 $this->generateFilePath($resource),
@@ -79,9 +79,6 @@ trait InteractsWithFiles
             return $uploaded;
         });
     }
-
-    
-
 
     public function deleteFile($resource)
     {

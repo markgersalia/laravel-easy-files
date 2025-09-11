@@ -120,14 +120,14 @@ trait HasFiles
         // Where the temp file lives
         $tempPath = "temp/laravel-easy-files/{$tempFilename}";
 
-        if (!Storage::disk('public')->exists($tempPath)) {
+        if (! Storage::disk('public')->exists($tempPath)) {
             throw new \Exception("Temp file not found: {$tempFilename}");
         }
 
         // Final filename
         $fileName = $tempFilename; // or generate new name if you like
- 
-          // Ensure dir exists
+
+        // Ensure dir exists
         if (! file_exists(dirname($targetPath))) {
             mkdir(dirname($targetPath), 0777, true);
         }
@@ -143,11 +143,11 @@ trait HasFiles
 
         // Save file record in DB
         return $this->files()->create([
-            'file_name'     => $fileName,
+            'file_name' => $fileName,
             'document_type' => $type,
-            'path'          => storage_path($storedPath),              // relative path
-            'origin'        => self::IS_UPLOADED,
-            'preview_url'  => Storage::url($storedPath) // generates /storage/...
+            'path' => storage_path($storedPath),              // relative path
+            'origin' => self::IS_UPLOADED,
+            'preview_url' => Storage::url($storedPath), // generates /storage/...
         ]);
     }
 }
